@@ -5,7 +5,8 @@
 # }
 
 provider "aws" {
-    region     = "${var.region}"
+    # region     = "${var.region}"
+    region = local.region
     profile = "default"
     
 }

@@ -41,12 +41,16 @@ resource "aws_db_instance" "myinstance" {
   username             = "myrdsuser"
   password             = "myrdspassword"
   parameter_group_name = "default.mysql5.7"
+#   timezone = "Pacific Standard Time"
+#   maintenance_window = "Tue:16:45-Tue:17:15"
   vpc_security_group_ids = ["${aws_security_group.rds_sg.id}"]
   skip_final_snapshot  = true
   publicly_accessible =  true
-  ca_cert_identifier = "${var.ca_cert_identifier}"
+#   ca_cert_identifier = "${var.ca_cert_identifier}"
 #   ca_cert_identifier   = "rds-ca-rsa4096-g1"
-  apply_immediately      = true
+  ca_cert_identifier = local.ca_cert_identifier
+#   apply_immediately      =  true
+ apply_immediately      =  local.apply_immediately
 #   ca_cert_identifier   = "rds-ca-2019"
 
   tags = {
